@@ -1,7 +1,16 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <!--
+    <record model="ir.ui.view" id="info_view.info">
+      <field name="name">info_view info</field>
+      <field name="model">info_view.wizard</field>
+      <field name="arch" type="xml">
+        <info>
+          <field name="message"/>
+        </info>
+      </field>
+    </record>
+    
     <record model="ir.ui.view" id="info_view.list">
       <field name="name">info_view list</field>
       <field name="model">info_view.info_view</field>
@@ -10,22 +19,32 @@
           <field name="name"/>
           <field name="value"/>
           <field name="value2"/>
+          <button class="oe_highlight" name="create_period" string="Open Wizard" type="object"/>          
         </tree>
       </field>
     </record>
-    -->
 
-    <!-- actions opening views on models -->
-    <!--
+    <record model="ir.ui.view" id="info_view.form">
+      <field name="name">info_view list</field>
+      <field name="model">info_view.info_view</field>
+      <field name="arch" type="xml">
+        <form>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+          <button class="oe_highlight" name="create_period" string="Open Wizard" type="object"/>
+        </form>
+      </field>
+    </record>
+  
+    <!-- actions opening views on models -->  
     <record model="ir.actions.act_window" id="info_view.action_window">
       <field name="name">info_view window</field>
       <field name="res_model">info_view.info_view</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,info</field>
     </record>
-    -->
 
-    <!-- server action to the one above -->
-    <!--
+    <!-- server action to the one above -->    
     <record model="ir.actions.server" id="info_view.action_server">
       <field name="name">info_view server</field>
       <field name="model_id" ref="model_info_view_info_view"/>
@@ -37,23 +56,18 @@
         }
       </field>
     </record>
-    -->
-
-    <!-- Top menu item -->
-    <!--
+   
+    <!-- Top menu item --> 
     <menuitem name="info_view" id="info_view.menu_root"/>
-    -->
+   
     <!-- menu categories -->
-    <!--
     <menuitem name="Menu 1" id="info_view.menu_1" parent="info_view.menu_root"/>
     <menuitem name="Menu 2" id="info_view.menu_2" parent="info_view.menu_root"/>
-    -->
+   
     <!-- actions -->
-    <!--
     <menuitem name="List" id="info_view.menu_1_list" parent="info_view.menu_1"
               action="info_view.action_window"/>
     <menuitem name="Server to list" id="info_view" parent="info_view.menu_2"
               action="info_view.action_server"/>
-    -->
   </data>
 </odoo>

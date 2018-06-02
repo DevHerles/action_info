@@ -25,6 +25,8 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'views/wizard.xml',
+        'views/assets.xml',
         'views/views.xml',
         'views/templates.xml',
     ],
@@ -32,4 +34,7 @@
     'demo': [
         'demo/demo.xml',
     ],
+    'qweb': [
+        'static/src/xml/info_view.xml',
+    ]
 }

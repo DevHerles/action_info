@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="InfoView">
+        <select t-if="toolbar" style="width: 30%"/>
+        <table class="o_treeview_table">
+            <thead>
+                <tr>
+                    <th class="treeview-header">
+                        Hello world!!
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div>Hello world!!!</div>
+    </t>
+    <t t-name="InfoView.FieldSelection">
+        <ul class="dropdown-menu o_pivot_field_menu" role="menu">
+            <t t-foreach="fields" t-as="field">
+                <t t-if="(field[1].type === 'date') || (field[1].type === 'datetime')">
+                    <li class="o_inline_dropdown" t-att-data-field="field[0]">
+                        <a href="#" class="o_pivot_field_selection">
+                            <t t-esc="field[1].string"/>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li t-att-data-field="field[0]"><a href="#" t-att-data-interval="'day'">Day</a></li>
+                            <li t-att-data-field="field[0]"><a href="#" t-att-data-interval="'week'">Week</a></li>
+                            <li t-att-data-field="field[0]"><a href="#" t-att-data-interval="'month'">Month</a></li>
+                            <li t-att-data-field="field[0]"><a href="#" t-att-data-interval="'quarter'">Quarter</a></li>
+                            <li t-att-data-field="field[0]"><a href="#" t-att-data-interval="'year'">Year</a></li>
+                        </ul>
+                    </li>
+                </t>
+                <t t-if="(field[1].type !== 'date') &amp;&amp; (field[1].type !== 'datetime')">
+                    <li t-att-data-field="field[0]"><a href="#"><t t-esc="field[1].string"/></a></li>
+                </t>
+            </t>
+        </ul>
+    </t>
+    <t t-name="InfoView.buttons">
+        <div class="btn-group btn-group-sm" role="group">
+            <button class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                Measures <span class="caret"/>
+            </button>
+            <ul class="dropdown-menu o_pivot_measures_list">
+                <li t-foreach="measures" t-as="measure" t-att-data-field="measure[0]">
+                    <a href="#"><t t-esc="measure[1].string"/></a>
+                </li>
+                <li class="divider"></li>
+                <li data-field="__count__"><a href="#">Count</a></li>
+            </ul>
+        </div>
+        <div class="btn-group btn-group-sm">
+            <button class="btn btn-default fa fa-expand o_pivot_flip_button" title="Flip axis"/>
+            <button class="btn btn-default fa fa-arrows-alt o_pivot_expand_button" title="Expand all"/>
+            <button class="btn btn-default fa fa-download o_pivot_download" title="Download xls"/>
+        </div>
+    </t>
+
+    <t t-name="InfoView.FieldSelection">
+        <ul class="dropdown-menu o_pivot_field_menu" role="menu">
+            <li>deded</li>
+        </ul>
+    </t>
+
+    <div t-name="InfoView.nodata" class="oe_view_nocontent" >
+        <p><strong>No data to display.</strong></p>
+        <p>
+            No data available for this pivot table.  Try to add some records, or make sure
+            that there is at least one measure and no active filter in the search bar.
+        </p>
+    </div>
+
+</templates>

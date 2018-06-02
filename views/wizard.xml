@@ -1,0 +1,14 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="info_view.wizard">
+      <field name="name">info_view info</field>
+      <field name="model">info_view.info_view</field>
+      <field name="arch" type="xml">
+        <form>
+          <field name="name"/>
+        </form>
+      </field>
+    </record>
+  </data>
+</odoo>
