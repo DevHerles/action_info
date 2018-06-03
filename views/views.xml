@@ -1,13 +1,11 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
+    <!-- explicit info view definition -->
     <record model="ir.ui.view" id="info_view.info">
       <field name="name">info_view info</field>
       <field name="model">info_view.wizard</field>
       <field name="arch" type="xml">
-        <info>
-          <field name="message"/>
-        </info>
+        <info/>
       </field>
     </record>
     

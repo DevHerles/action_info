@@ -16,12 +16,13 @@ class info_view(models.Model):
 
     def create_period(self):
         return {
-            'name': 'Info form',
+            'name': 'Información',
             'type': 'ir.actions.act_window',
             'res_model': 'info_view.wizard',
             'view_mode': 'info',
             'view_type': 'info',
-            'target': 'new'
+            'target': 'new',
+            'context': {'message': 'El documento ha sido generado correctamente.'}
             }
 
 
@@ -30,13 +31,7 @@ class view(models.Model):
     _inherit = 'ir.ui.view'
 
     type = fields.Selection(selection_add=[('info', 'Info')])
-    # in your case you should replate ('assignment', 'Assignment') with ('styled', 'Styled or another name...')
 
 
 class wizard(models.Model):
     _name = 'info_view.wizard'
-
-    message = fields.Char()
-
-    def create_period(self):
-        print('Hey hey 1')
