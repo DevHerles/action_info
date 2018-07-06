@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "info_view",
+    'name': "action_info",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -24,17 +24,9 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/wizard.xml',
         'views/assets.xml',
-        'views/views.xml',
-        'views/templates.xml',
-    ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
     ],
     'qweb': [
-        'static/src/xml/info_view.xml',
+        'static/src/xml/action_info.xml',
     ]
 }

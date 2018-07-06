@@ -1,0 +1,6 @@
+.info_message {
+    padding: 20px;
+}
+.invalid-value {
+    background-color: red;
+}
