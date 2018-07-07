@@ -1,33 +1,27 @@
-odoo.define('action_info.ActionInfo', function (require) {
-    "use strict";
-    /*---------------------------------------------------------
-     * Odoo Info view
-     *---------------------------------------------------------*/
-    
-    var core = require('web.core');
-    var View = require('web.View');
-    var FormWidget = require('web.FormView');
+openerp.action_info = function (instance,local) {
+    var qWeb = instance.web.qweb;
+    var _t = instance.web._t;
 
-    var _lt = core._lt;
-    var QWeb = core.qweb;
-    
-    var ActionInfo = FormWidget.extend({
-        init: function() {
+    instance.action = {};
+    instance.action.info = instance.web.form.FormWidget.extend({
+        init: function () {
             this._super.apply(this, arguments);
         },
         start: function () {
-            this.field_manager.on("record_created", this, function() {
-                console.log("record_created");
-            })
-            return this._super();
+            var self = this;
+            this.field_manager.on("load_record", this, function() { 
+                console.log('load_record') 
+            });
+            this.field_manager.on("record_created", this, function() { 
+                console.log('record_created') 
+            });
+            $.when.apply($, this.promises).then(function () {
+                self.render();
+            });
         },
-        destroy: function () {
-            return this._super.apply(this, arguments);
-        },
+        render: function () {
+            console.log('Render!!!!');
+        }
     });
-    
-    core.form_widget_registry.add('info', ActionInfo);
-
-    return ActionInfo;
-});
-    
+    instance.web.form.custom_widgets.add('action_info', 'instance.action.info');
+};
